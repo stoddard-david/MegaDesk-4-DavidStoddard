@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace MegaDesk_4_DavidStoddard
@@ -9,11 +11,11 @@ namespace MegaDesk_4_DavidStoddard
     private bool CancelPress = false;
     private enum Material
     {
-      Oak,
-      Laminate,
-      Pine,
-      Rosewood,
-      Veneer
+      Oak=0,
+      Laminate=1,
+      Pine=2,
+      Rosewood=3,
+      Veneer=4
     }
 
     public AddQuotes()
@@ -130,5 +132,16 @@ namespace MegaDesk_4_DavidStoddard
       }
     }
 
+    private void LoadingForm(object sender, EventArgs e)
+    {
+      List<string> materialsList = new List<string>();
+      materialsList = Enum.GetNames(typeof(Material)).ToList();
+      foreach (var Material in materialsList)
+      {
+        materialSelect.Items.Add(Material);
+      }
+      materialSelect.SelectedIndex = 0;
+      rushOrderVal.SelectedIndex = 0;
+    }
   }
 }

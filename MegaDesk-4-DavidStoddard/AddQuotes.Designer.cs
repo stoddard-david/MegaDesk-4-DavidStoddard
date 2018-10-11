@@ -90,12 +90,6 @@
       // 
       this.materialSelect.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.materialSelect.FormattingEnabled = true;
-      this.materialSelect.Items.AddRange(new object[] {
-            "Oak",
-            "Laminate",
-            "Pine",
-            "Rosewood",
-            "Veneer"});
       this.materialSelect.Location = new System.Drawing.Point(119, 63);
       this.materialSelect.Name = "materialSelect";
       this.materialSelect.Size = new System.Drawing.Size(148, 27);
@@ -228,8 +222,13 @@
       this.widthVal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.widthVal.Location = new System.Drawing.Point(119, 103);
       this.widthVal.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+      this.widthVal.Maximum = new decimal(new int[] {
+            96,
+            0,
+            0,
+            0});
       this.widthVal.Minimum = new decimal(new int[] {
-            20,
+            24,
             0,
             0,
             0});
@@ -307,6 +306,7 @@
       this.Name = "AddQuotes";
       this.Text = "Add New Quotes";
       this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SubFormClosing);
+      this.Load += new System.EventHandler(this.LoadingForm);
       ((System.ComponentModel.ISupportInitialize)(this.numberDrawersVal)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.depthVal)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.widthVal)).EndInit();
