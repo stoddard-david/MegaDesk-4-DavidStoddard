@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MegaDesk_4_DavidStoddard
 {
   public partial class MainMenu : Form
   {
+    private List<DeskQuotes> QuotesList = new List<DeskQuotes>();
+
     public MainMenu()
     {
       InitializeComponent();
@@ -19,7 +15,7 @@ namespace MegaDesk_4_DavidStoddard
 
     private void AddQuotesBtn_Click(object sender, EventArgs e)
     {
-      AddQuotes AddQuoteForm = new AddQuotes { Tag = this };
+      AddQuotes AddQuoteForm = new AddQuotes(QuotesList) { Tag = this };
       AddQuoteForm.Show(this);
       Hide();
     }

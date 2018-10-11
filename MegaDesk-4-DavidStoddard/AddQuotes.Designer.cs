@@ -48,6 +48,10 @@
       this.depthDetails = new System.Windows.Forms.Label();
       this.drawerDetials = new System.Windows.Forms.Label();
       this.widthErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+      this.NameNote = new System.Windows.Forms.Label();
+      this.MaterialNote = new System.Windows.Forms.Label();
+      this.RushNote = new System.Windows.Forms.Label();
+      this.IntNote = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.numberDrawersVal)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.depthVal)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.widthVal)).BeginInit();
@@ -278,11 +282,55 @@
       // 
       this.widthErrorProvider.ContainerControl = this;
       // 
+      // NameNote
+      // 
+      this.NameNote.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.NameNote.ForeColor = System.Drawing.Color.DarkOrange;
+      this.NameNote.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+      this.NameNote.Location = new System.Drawing.Point(273, 29);
+      this.NameNote.Name = "NameNote";
+      this.NameNote.Size = new System.Drawing.Size(134, 22);
+      this.NameNote.TabIndex = 18;
+      // 
+      // MaterialNote
+      // 
+      this.MaterialNote.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.MaterialNote.ForeColor = System.Drawing.Color.DarkOrange;
+      this.MaterialNote.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+      this.MaterialNote.Location = new System.Drawing.Point(273, 69);
+      this.MaterialNote.Name = "MaterialNote";
+      this.MaterialNote.Size = new System.Drawing.Size(134, 22);
+      this.MaterialNote.TabIndex = 19;
+      // 
+      // RushNote
+      // 
+      this.RushNote.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.RushNote.ForeColor = System.Drawing.Color.DarkOrange;
+      this.RushNote.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+      this.RushNote.Location = new System.Drawing.Point(147, 262);
+      this.RushNote.Name = "RushNote";
+      this.RushNote.Size = new System.Drawing.Size(247, 22);
+      this.RushNote.TabIndex = 20;
+      // 
+      // IntNote
+      // 
+      this.IntNote.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.IntNote.ForeColor = System.Drawing.Color.DarkOrange;
+      this.IntNote.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+      this.IntNote.Location = new System.Drawing.Point(73, 222);
+      this.IntNote.Name = "IntNote";
+      this.IntNote.Size = new System.Drawing.Size(247, 22);
+      this.IntNote.TabIndex = 21;
+      // 
       // AddQuotes
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(409, 442);
+      this.Controls.Add(this.IntNote);
+      this.Controls.Add(this.RushNote);
+      this.Controls.Add(this.MaterialNote);
+      this.Controls.Add(this.NameNote);
       this.Controls.Add(this.drawerDetials);
       this.Controls.Add(this.depthDetails);
       this.Controls.Add(this.widthDetails);
@@ -336,5 +384,9 @@
     private System.Windows.Forms.Label depthDetails;
     private System.Windows.Forms.Label drawerDetials;
     private System.Windows.Forms.ErrorProvider widthErrorProvider;
+    private System.Windows.Forms.Label NameNote;
+    private System.Windows.Forms.Label MaterialNote;
+    private System.Windows.Forms.Label RushNote;
+    private System.Windows.Forms.Label IntNote;
   }
 }

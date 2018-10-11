@@ -18,8 +18,11 @@ namespace MegaDesk_4_DavidStoddard
       Veneer=4
     }
 
-    public AddQuotes()
+    private List<DeskQuotes> QuotesList = new List<DeskQuotes>();
+
+    public AddQuotes(List<DeskQuotes> quotesList)
     {
+      QuotesList = quotesList;
       InitializeComponent();
     }
 
@@ -112,12 +115,54 @@ namespace MegaDesk_4_DavidStoddard
 
     private void AddQuotesBtn_Click(object sender, EventArgs e)
     {
+      bool noError = true;
+      NameNote.Text = "";
+      MaterialNote.Text = "";
+      IntNote.Text = "";
+
       string nameInput = nameBox.Text;
-      string materialInput = checkMaterial(materialSelect.Text);
+      if (nameBox.Text == ""){
+        NameNote.Text = "Please enter name";
+        noError = false;
+      }
+
+      string materialInput = materialSelect.Text;
+      if (!checkMaterial(materialInput))
+      {
+        MaterialNote.Text = "Select material";
+        noError = false;
+      }
+
+      string rushInput = rushOrderVal.Text;
+      if (!checkRush(rushInput))
+      {
+        RushNote.Text = "Select order speed";
+        noError = false;
+      }
+
+      int widthInput = 0;
+      int depthInput = 0;
+      int drawersInput = 0;
+      try
+      {
+        widthInput = Convert.ToInt32(widthVal.Value);
+        depthInput = Convert.ToInt32(depthVal.Value);
+        drawersInput = Convert.ToInt32(numberDrawersVal.Value);
+      }
+      catch
+      {
+        IntNote.Text = "Enter Valid Number";
+        noError = false;
+      }
+
+      if (noError)
+      {
+        DeskQuotes desk = new DeskQuotes(nameInput, materialInput, rushInput, widthInput, depthInput, drawersInput);
+      }
 
     }
 
-    private string checkMaterial(string material)
+    private bool checkMaterial(string material)
     {
       switch (material)
       {
@@ -126,9 +171,23 @@ namespace MegaDesk_4_DavidStoddard
         case "Pine":
         case "Rosewood":
         case "Veneer":
-          return material;
+          return true;
         default:
-          return "Undefined material";
+          return false;
+      }
+    }
+
+    private bool checkRush(string rushSpeed)
+    {
+      switch (rushSpeed)
+      {
+        case "None":
+        case "3 Day":
+        case "5 Day":
+        case "7 Day":
+          return true;
+        default:
+          return false;
       }
     }
 
@@ -143,5 +202,7 @@ namespace MegaDesk_4_DavidStoddard
       materialSelect.SelectedIndex = 0;
       rushOrderVal.SelectedIndex = 0;
     }
+
+
   }
 }
