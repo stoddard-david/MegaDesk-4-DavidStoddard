@@ -1,6 +1,6 @@
 ﻿namespace MegaDesk_4_DavidStoddard
 {
-  class Desk
+  public class Desk
   {
     //Set the enum
     public enum SurfaceMaterial

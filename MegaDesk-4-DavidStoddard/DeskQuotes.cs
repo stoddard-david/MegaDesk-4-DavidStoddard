@@ -15,7 +15,7 @@ namespace MegaDesk_4_DavidStoddard
     }
 
     //Set up variables
-    private Desk Desk;
+    public Desk Desk;
     public String Name { get; set; }
     public DateTime QuoteDate { get; }
     public RushOrder OrderSpeed { get; set; }

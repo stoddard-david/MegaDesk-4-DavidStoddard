@@ -168,7 +168,13 @@ namespace MegaDesk_4_DavidStoddard
       if (noError)
       {
         DeskQuotes desk = new DeskQuotes(nameInput, materialInput, rushInput, widthInput, depthInput, drawersInput);
-        NameNote.Text = desk.PriceQuote.ToString();
+        QuotesList.Add(desk);
+
+        //Open the quote
+        DisplayQuote DisplayQuoteForm = new DisplayQuote(QuotesList) { Tag = (MainMenu)Tag };
+        DisplayQuoteForm.Show((MainMenu)Tag);
+        CancelPress = true;
+        Close();
       }
 
     }

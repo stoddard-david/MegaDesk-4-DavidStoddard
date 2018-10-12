@@ -13,6 +13,7 @@ namespace MegaDesk_4_DavidStoddard
       InitializeComponent();
     }
 
+    //Opens the add quotes form
     private void AddQuotesBtn_Click(object sender, EventArgs e)
     {
       AddQuotes AddQuoteForm = new AddQuotes(QuotesList) { Tag = this };
@@ -20,6 +21,7 @@ namespace MegaDesk_4_DavidStoddard
       Hide();
     }
 
+    //Exits the application
     private void ExitBtn_Click(object sender, EventArgs e)
     {
       Close();
