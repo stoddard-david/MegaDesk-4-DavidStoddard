@@ -5,21 +5,28 @@ namespace MegaDesk_4_DavidStoddard
 {
   public class DeskQuotes
   {
-    private Desk Desk;
-    private String Name;
-    private DateTime QuoteDate { get; }
-    private enum RushOrder
+    //Setup enum type
+    public enum RushOrder
     {
-      None,
-      Day3,
-      Day5,
-      Day7
+      None = 0,
+      Day3 = 1,
+      Day5 = 2,
+      Day7 = 3
     }
-    private RushOrder OrderSpeed;
 
-    private int PriceQuote;
+    //Set up variables
+    private Desk Desk;
+    public String Name { get; set; }
+    public DateTime QuoteDate { get; }
+    public RushOrder OrderSpeed { get; set; }
+    public int PriceQuote { get; private set; }
 
+    //CONSTANTS
+    private const int BASE_PRICE = 200;
+    private const int DRAW_PRICE = 50;
+    private const int AREA_PRICE = 1;
     private readonly int[,] RUSH_COST = new int[,] {
+      {0,0,0},
       {60,70,80},
       {40,50,60},
       {30,35,40}
@@ -29,8 +36,7 @@ namespace MegaDesk_4_DavidStoddard
       200,100,50,300,125
     };
 
-    private const int BASE_PRICE = 200;
-
+    //Constructor
     public DeskQuotes(string name, string material, string rush, int width, int depth, int drawer)
     {
       Name = name;
@@ -42,33 +48,34 @@ namespace MegaDesk_4_DavidStoddard
       GetQuote();
     }
 
+    //Calculates quote
     private void GetQuote()
     {
       int quote = BASE_PRICE;
 
       if (Desk.Area > 1000)
-        quote += (Desk.Area - 1000);
+        quote += (Desk.Area - 1000)* AREA_PRICE;
 
       switch (Desk.Material)
       {
         case Desk.SurfaceMaterial.Oak:
-          quote = +SURFACE_COST[0];
+          quote += SURFACE_COST[0];
           break;
         case Desk.SurfaceMaterial.Laminate:
-          quote = +SURFACE_COST[1];
+          quote += SURFACE_COST[1];
           break;
         case Desk.SurfaceMaterial.Pine:
-          quote = +SURFACE_COST[2];
+          quote += SURFACE_COST[2];
           break;
         case Desk.SurfaceMaterial.Rosewood:
-          quote = +SURFACE_COST[3];
+          quote += SURFACE_COST[3];
           break;
         case Desk.SurfaceMaterial.Veneer:
-          quote = +SURFACE_COST[4];
+          quote += SURFACE_COST[4];
           break;
       }
 
-      quote = +Desk.Drawers * 50;
+      quote += Desk.Drawers * DRAW_PRICE;
             
       int sizeIndex = 0;
       if (Desk.Area > 2000)
@@ -80,23 +87,12 @@ namespace MegaDesk_4_DavidStoddard
         sizeIndex = 1;
       }
 
-      /*switch (rushOrder)
- case:
-        '3Day'
- priceQuote += RUSH_COST[0][sizeIndex]
- break
- case:
-        '5Day'
- priceQuote += RUSH_COST[1][sizeIndex]
- break
- case:
-        '7Day'
- priceQuote += RUSH_COST[2][sizeIndex]
- break*/
+      quote += RUSH_COST[(int)OrderSpeed,sizeIndex];
 
       PriceQuote = quote;
     }
 
+    //Set the Enum value of the rush order
     private void SetOrderSpeed(string value)
     {
       switch (value)

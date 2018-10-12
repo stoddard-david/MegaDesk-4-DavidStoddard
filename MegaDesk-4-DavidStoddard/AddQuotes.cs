@@ -8,24 +8,27 @@ namespace MegaDesk_4_DavidStoddard
 {
   public partial class AddQuotes : Form
   {
-    private bool CancelPress = false;
+    //Variables
     private enum Material
     {
-      Oak=0,
-      Laminate=1,
-      Pine=2,
-      Rosewood=3,
-      Veneer=4
+      Oak = 0,
+      Laminate = 1,
+      Pine = 2,
+      Rosewood = 3,
+      Veneer = 4
     }
 
+    private bool CancelPress = false;
     private List<DeskQuotes> QuotesList = new List<DeskQuotes>();
 
+    //Constructor
     public AddQuotes(List<DeskQuotes> quotesList)
     {
       QuotesList = quotesList;
       InitializeComponent();
     }
 
+    //Cancel button goes to main menu
     private void cancelBtn_Click(object sender, EventArgs e)
     {
       var MainMenu = (MainMenu)Tag;
@@ -34,6 +37,7 @@ namespace MegaDesk_4_DavidStoddard
       Close();
     }
 
+    //Checks for closing application
     private void SubFormClosing(object sender, FormClosedEventArgs e)
     {
       if (e.CloseReason == CloseReason.UserClosing && !CancelPress)
@@ -42,6 +46,7 @@ namespace MegaDesk_4_DavidStoddard
       }
     }
 
+    //Checks the value
     private void value_Enter(object sender, EventArgs e)
     {
       //Select the whole answer in the NumbericUpDown control
@@ -54,6 +59,7 @@ namespace MegaDesk_4_DavidStoddard
       }
     }
 
+    //Validates the width
     private void widthVal_Validating(object sender, CancelEventArgs e)
     {
       string errorMsg;
@@ -68,12 +74,14 @@ namespace MegaDesk_4_DavidStoddard
       }
     }
 
+    //When Validated then reset the error
     private void widthVal_Validated(object sender, EventArgs e)
     {
       // If all conditions have been met, clear the ErrorProvider of errors.
       widthErrorProvider.SetError(widthVal, "");
     }
 
+    //Validate the size of based on the min and max passed
     public bool ValidSize(string numberValue, int min, int max, out string errorMessage)
     {
       // Confirm that the email address string is not empty.
@@ -105,6 +113,7 @@ namespace MegaDesk_4_DavidStoddard
       }
     }
 
+    //Checks when key is pressed that only numbers are entered
     private void depthVal_KeyPress(object sender, KeyPressEventArgs e)
     {
       if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -113,6 +122,7 @@ namespace MegaDesk_4_DavidStoddard
       }
     }
 
+    //Validates and creates DeskQuote object
     private void AddQuotesBtn_Click(object sender, EventArgs e)
     {
       bool noError = true;
@@ -158,10 +168,12 @@ namespace MegaDesk_4_DavidStoddard
       if (noError)
       {
         DeskQuotes desk = new DeskQuotes(nameInput, materialInput, rushInput, widthInput, depthInput, drawersInput);
+        NameNote.Text = desk.PriceQuote.ToString();
       }
 
     }
 
+    //Checks the marterial
     private bool checkMaterial(string material)
     {
       switch (material)
@@ -177,6 +189,7 @@ namespace MegaDesk_4_DavidStoddard
       }
     }
 
+    //Checsk the rush variable
     private bool checkRush(string rushSpeed)
     {
       switch (rushSpeed)
@@ -191,6 +204,7 @@ namespace MegaDesk_4_DavidStoddard
       }
     }
 
+    //When the form loads populate material list and set defaults
     private void LoadingForm(object sender, EventArgs e)
     {
       List<string> materialsList = new List<string>();
