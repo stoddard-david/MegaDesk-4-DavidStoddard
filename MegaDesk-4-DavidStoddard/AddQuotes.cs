@@ -201,7 +201,7 @@ namespace MegaDesk_4_DavidStoddard
         deskCommaFormat += desk.Desk.Drawers.ToString() + ",";
         deskCommaFormat += desk.PriceQuote.ToString();
 
-        using (var writer = new StreamWriter(FILE_NAME))
+        using (var writer = new StreamWriter(FILE_NAME, true))
         {
           writer.WriteLine(deskCommaFormat);
         }
