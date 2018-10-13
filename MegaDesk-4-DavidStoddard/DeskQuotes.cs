@@ -48,6 +48,17 @@ namespace MegaDesk_4_DavidStoddard
       GetQuote();
     }
 
+    //Constructor2 from file
+    public DeskQuotes(string name, string material, string rush, int width, int depth, int drawer, DateTime time, int price)
+    {
+      Name = name;
+      SetOrderSpeed(rush);
+
+      Desk = new Desk(material, width, depth, drawer);
+      QuoteDate = time;
+      PriceQuote = price;
+    }
+
     //Calculates quote
     private void GetQuote()
     {

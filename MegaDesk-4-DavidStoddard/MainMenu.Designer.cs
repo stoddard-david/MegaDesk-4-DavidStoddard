@@ -123,6 +123,7 @@
       this.MinimizeBox = false;
       this.Name = "MainMenu";
       this.Text = "MegaDesk";
+      this.Load += new System.EventHandler(this.LoadList);
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.ResumeLayout(false);
 
