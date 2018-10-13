@@ -21,12 +21,6 @@ namespace MegaDesk_4_DavidStoddard
       Hide();
     }
 
-    //Exits the application
-    private void ExitBtn_Click(object sender, EventArgs e)
-    {
-      Close();
-    }
-
     private void ViewQuotesBtn_Click(object sender, EventArgs e)
     {
       ViewAllQuotes ViewQuotesForm = new ViewAllQuotes { Tag = this };
@@ -34,11 +28,18 @@ namespace MegaDesk_4_DavidStoddard
       Hide();
     }
 
+    //Opens the search form
     private void SearchQuotesBtn_Click(object sender, EventArgs e)
     {
-      SearchQuotes SearchQuotesForm = new SearchQuotes { Tag = this };
+      SearchQuotes SearchQuotesForm = new SearchQuotes(QuotesList) { Tag = this };
       SearchQuotesForm.Show(this);
       Hide();
+    }
+
+    //Exits the application
+    private void ExitBtn_Click(object sender, EventArgs e)
+    {
+      Close();
     }
   }
 }

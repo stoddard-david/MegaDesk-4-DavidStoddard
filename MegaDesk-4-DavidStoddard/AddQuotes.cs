@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace MegaDesk_4_DavidStoddard
 {
@@ -137,7 +139,7 @@ namespace MegaDesk_4_DavidStoddard
       }
 
       string materialInput = materialSelect.Text;
-      if (!checkMaterial(materialInput))
+      if (!CheckMaterial(materialInput))
       {
         MaterialNote.Text = "Select material";
         noError = false;
@@ -170,6 +172,8 @@ namespace MegaDesk_4_DavidStoddard
         DeskQuotes desk = new DeskQuotes(nameInput, materialInput, rushInput, widthInput, depthInput, drawersInput);
         QuotesList.Add(desk);
 
+        AddQuoteToFile(desk);
+
         //Open the quote
         DisplayQuote DisplayQuoteForm = new DisplayQuote(QuotesList) { Tag = (MainMenu)Tag };
         DisplayQuoteForm.Show((MainMenu)Tag);
@@ -179,8 +183,21 @@ namespace MegaDesk_4_DavidStoddard
 
     }
 
+    //Add quote to external file
+    public void AddQuoteToFile(DeskQuotes desk)
+    {
+      try
+      {
+
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Unable to save to file\n" + ex);
+      }
+    }
+
     //Checks the marterial
-    private bool checkMaterial(string material)
+    private bool CheckMaterial(string material)
     {
       switch (material)
       {
