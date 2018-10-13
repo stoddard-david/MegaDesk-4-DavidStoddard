@@ -23,6 +23,9 @@ namespace MegaDesk_4_DavidStoddard
     private bool CancelPress = false;
     private List<DeskQuotes> QuotesList = new List<DeskQuotes>();
 
+    //Constants
+    private string FILE_NAME = @"quotes.txt";
+
     //Constructor
     public AddQuotes(List<DeskQuotes> quotesList)
     {
@@ -188,7 +191,20 @@ namespace MegaDesk_4_DavidStoddard
     {
       try
       {
+        string deskCommaFormat;
+        deskCommaFormat = desk.Name + ",";
+        deskCommaFormat += desk.Desk.Material.ToString() + ",";
+        deskCommaFormat += desk.OrderSpeed.ToString() + ",";
+        deskCommaFormat += desk.Desk.Width.ToString() + ",";
+        deskCommaFormat += desk.Desk.Depth.ToString() + ",";
+        deskCommaFormat += desk.Desk.Area.ToString() + ",";
+        deskCommaFormat += desk.Desk.Drawers.ToString() + ",";
+        deskCommaFormat += desk.PriceQuote.ToString();
 
+        using (var writer = new StreamWriter(FILE_NAME))
+        {
+          writer.WriteLine(deskCommaFormat);
+        }
       }
       catch (Exception ex)
       {
